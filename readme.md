@@ -1,4 +1,5 @@
 # APISIX Model Context Protocol (MCP) Server
+[![smithery badge](https://smithery.ai/badge/@api7/apisix-mcp)](https://smithery.ai/server/@api7/apisix-mcp)
 
 APISIX Model Context Protocol (MCP) server is used to bridge large language models (LLMs) with the APISIX Admin API. It aims to enable natural language-based interaction for viewing and managing resources in APISIX through MCP-compatible AI clients.
 
@@ -40,6 +41,14 @@ https://github.com/user-attachments/assets/081e878c-225e-4ff8-a9c5-5813f4784cfe
 ### Prerequisite
 
 Follow the APISIX [Getting Started](https://docs.api7.ai/apisix/getting-started/) guide to set up and run APISIX.
+
+### Installing via Smithery
+
+To install APISIX Model Context Protocol Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@api7/apisix-mcp):
+
+```bash
+npx -y @smithery/cli install @api7/apisix-mcp --client claude
+```
 
 ### Using npm
 
