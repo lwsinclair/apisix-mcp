@@ -10,6 +10,7 @@ https://github.com/user-attachments/assets/081e878c-225e-4ff8-a9c5-5813f4784cfe
 
 - `get_resource`: Retrieve resources by type (routes, services, upstreams, etc.)
 - `delete_resource`: Remove resources by ID
+- `send_request_to_gateway`: Send a request or multiple requests to the APISIX gateway
 
 ### API Resources Operations
 
@@ -56,6 +57,7 @@ Configure your AI client (Cursor, Claude, Copilot, etc.) with following settings
       ],
       "env": {
         "APISIX_SERVER_HOST": "your-apisix-server-host",
+        "APISIX_SERVER_PORT": "your-apisix-server-port",
         "APISIX_ADMIN_API_PORT": "your-apisix-admin-api-port",
         "APISIX_ADMIN_API_PREFIX": "your-apisix-admin-api-prefix",
         "APISIX_ADMIN_KEY": "your-apisix-api-key"
@@ -93,6 +95,7 @@ Configure your AI client (Cursor, Claude, Copilot, etc.) with following settings
       ],
       "env": {
         "APISIX_SERVER_HOST": "your-apisix-server-host",
+        "APISIX_SERVER_PORT": "your-apisix-server-port",
         "APISIX_ADMIN_API_PORT": "your-apisix-admin-api-port",
         "APISIX_ADMIN_API_PREFIX": "your-apisix-admin-api-prefix",
         "APISIX_ADMIN_KEY": "your-apisix-api-key"
@@ -107,8 +110,9 @@ Configure your AI client (Cursor, Claude, Copilot, etc.) with following settings
 | Variable                  | Description                                 | Default Value                      |
 | ------------------------- | ------------------------------------------- | ---------------------------------- |
 | `APISIX_SERVER_HOST`      | Host that have access to your APISIX server | `http://127.0.0.1`                 |
+| `APISIX_SERVER_PORT`      | APISIX server port                          | `9080`                             |
 | `APISIX_ADMIN_API_PORT`   | Admin API port                              | `9180`                             |
 | `APISIX_ADMIN_API_PREFIX` | Admin API prefix                            | `/apisix/admin`                    |
-| `APISIX_ADMIN_KEY`          | Admin API authentication key                | `edd1c9f034335f136f87ad84b625c8f1` |
+| `APISIX_ADMIN_KEY`        | Admin API authentication key                | `edd1c9f034335f136f87ad84b625c8f1` |
 
 To view or modify Admin API configurations in APISIX, refer to the [Admin API](https://apisix.apache.org/docs/apisix/admin-api) documentation.
