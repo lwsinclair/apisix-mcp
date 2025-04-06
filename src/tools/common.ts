@@ -49,7 +49,8 @@ const setupCommonTools = (server: McpServer) => {
 
         return {
           status: response.status,
-          data: response.data
+          data: response.data,
+          headers: response.headers,
         };
       } catch (error) {
         // handle error

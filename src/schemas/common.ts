@@ -54,7 +54,7 @@ export const SendRequestSchema = z.object({
     method: z.string().describe("request method"),
     data: z.any().optional().describe("request data"),
     headers: z.record(z.string(), z.string()).optional().describe("request headers"),
-    count: z.number().optional().describe("number of requests to send in parallel").default(1),
+    repeatCount: z.number().optional().describe("number of requests to send in parallel").default(1),
   })).describe("array of requests to send in parallel"),
 });
 
