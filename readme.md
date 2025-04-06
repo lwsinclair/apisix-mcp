@@ -91,7 +91,7 @@ Configure your AI client (Cursor, Claude, Copilot, etc.) with following settings
     "apisix-mcp": {
       "command": "node",
       "args": [
-        "your-apisix-mcp-path/build/index.js"
+        "your-apisix-mcp-path/dist/index.js"
       ],
       "env": {
         "APISIX_SERVER_HOST": "your-apisix-server-host",

@@ -10,7 +10,7 @@ interface RequestConfig {
   method: AxiosRequestConfig['method'];
   data?: AxiosRequestConfig['data'];
   headers?: AxiosRequestConfig['headers'];
-  count?: number;
+  repeatCount?: number;
 }
 
 const setupCommonTools = (server: McpServer) => {
@@ -59,28 +59,31 @@ const setupCommonTools = (server: McpServer) => {
           // The server responded with an error status code
           return {
             status: axiosError.response.status,
-            data: axiosError.response.data || { error: 'Request failed' }
+            data: axiosError.response.data || { error: 'Request failed' },
+            headers: axiosError.response.headers,
           };
         } else if (axiosError.request) {
           // The request was sent but no response was received
           return {
             status: 503, // Use 503 to indicate service is unavailable
-            data: { error: 'Gateway is not responding' }
+            data: { error: 'Gateway is not responding' },
+            headers: axiosError.request.headers,
           };
         } else {
           // An error occurred while setting up the request
           return {
             status: 500,
-            data: { error: axiosError.message || 'Request error' }
+            data: { error: axiosError.message || 'Request error' },
+            headers: axiosError.request.headers,
           };
         }
       }
     };
 
     const makeRepeatedRequests = async (config: RequestConfig) => {
-      const count = config.count || 1;
-      if (count > 1) {
-        return Promise.all(Array(count).fill(null).map(() => makeRequest(config)));
+      const repeatCount = config.repeatCount || 1;
+      if (repeatCount > 1) {
+        return Promise.all(Array(repeatCount).fill(null).map(() => makeRequest(config)));
       } else {
         return makeRequest(config);
       }
