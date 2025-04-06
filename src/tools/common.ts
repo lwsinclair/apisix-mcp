@@ -60,21 +60,21 @@ const setupCommonTools = (server: McpServer) => {
           return {
             status: axiosError.response.status,
             data: axiosError.response.data || { error: 'Request failed' },
-            headers: axiosError.response.headers,
+            headers: axiosError.response?.headers || {},
           };
         } else if (axiosError.request) {
           // The request was sent but no response was received
           return {
             status: 503, // Use 503 to indicate service is unavailable
             data: { error: 'Gateway is not responding' },
-            headers: axiosError.request.headers,
+            headers: axiosError.request?.headers || {},
           };
         } else {
           // An error occurred while setting up the request
           return {
             status: 500,
             data: { error: axiosError.message || 'Request error' },
-            headers: axiosError.request.headers,
+            headers: axiosError.request?.headers || {},
           };
         }
       }
