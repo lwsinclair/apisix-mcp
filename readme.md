@@ -65,7 +65,7 @@ Configure your AI client (Cursor, Claude, Copilot, etc.) with following settings
         "apisix-mcp"
       ],
       "env": {
-        "APISIX_SERVER_HOST": "your-apisix-server-host",
+        "APISIX_GATEWAY_URL": "your-apisix-server-host",
         "APISIX_SERVER_PORT": "your-apisix-server-port",
         "APISIX_ADMIN_API_PORT": "your-apisix-admin-api-port",
         "APISIX_ADMIN_API_PREFIX": "your-apisix-admin-api-prefix",
@@ -103,7 +103,7 @@ Configure your AI client (Cursor, Claude, Copilot, etc.) with following settings
         "your-apisix-mcp-path/dist/index.js"
       ],
       "env": {
-        "APISIX_SERVER_HOST": "your-apisix-server-host",
+        "APISIX_GATEWAY_URL": "your-apisix-server-host",
         "APISIX_SERVER_PORT": "your-apisix-server-port",
         "APISIX_ADMIN_API_PORT": "your-apisix-admin-api-port",
         "APISIX_ADMIN_API_PREFIX": "your-apisix-admin-api-prefix",
@@ -118,7 +118,7 @@ Configure your AI client (Cursor, Claude, Copilot, etc.) with following settings
 
 | Variable                  | Description                                 | Default Value                      |
 | ------------------------- | ------------------------------------------- | ---------------------------------- |
-| `APISIX_SERVER_HOST`      | Host that have access to your APISIX server | `http://127.0.0.1`                 |
+| `APISIX_GATEWAY_URL`      | Host that have access to your APISIX server | `http://127.0.0.1`                 |
 | `APISIX_SERVER_PORT`      | APISIX server port                          | `9080`                             |
 | `APISIX_ADMIN_API_PORT`   | Admin API port                              | `9180`                             |
 | `APISIX_ADMIN_API_PREFIX` | Admin API prefix                            | `/apisix/admin`                    |
