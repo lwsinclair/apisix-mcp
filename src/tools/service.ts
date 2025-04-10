@@ -12,7 +12,7 @@ const setupServiceTools = (server: McpServer) => {
     }
   });
 
-  server.tool("update_service", `Update specific attributes of an existing service`, UpdateServiceSchema.shape, async (args) => {
+  server.tool("update_service", "Update specific attributes of an existing service", UpdateServiceSchema.shape, async (args) => {
     return await makeAdminAPIRequest(`/services/${args.id}`, "PATCH", args.service);
   });
 };
