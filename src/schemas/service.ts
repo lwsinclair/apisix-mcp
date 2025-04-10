@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { UpstreamSchema } from "./upstream.js";
 import { PluginSchema } from "./plugin.js";
+import { createNullablePatchSchema } from "../utils/helper.js";
 
 export const ServiceSchema = z
   .object({
@@ -27,10 +28,10 @@ export const ServiceSchema = z
   .passthrough()
   .describe("service configuration object");
 
-export const UpdateServiceSchema = z.object({
+export const UpdateServiceSchema = createNullablePatchSchema(z.object({
   id: z.string().describe("service id"),
   service: ServiceSchema.partial(),
-});
+}));
 
 export const CreateServiceSchema = z.object({
   id: z.string().optional().describe("service id"),

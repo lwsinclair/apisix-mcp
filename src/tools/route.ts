@@ -1,5 +1,5 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { makeAdminAPIRequest } from "../adminAPI.js";
+import makeAdminAPIRequest from "../utils/adminAPI.js";
 import { CreateRouteSchema, UpdateRouteSchema } from "../schemas/route.js";
 
 const setupRouteTools = (server: McpServer) => {
@@ -13,7 +13,7 @@ const setupRouteTools = (server: McpServer) => {
     }
   });
 
-  server.tool("update_route", "Update specific attributes of an existing route", UpdateRouteSchema.shape, async (args) => {
+  server.tool("update_route", `Update specific attributes of an existing route`, UpdateRouteSchema.shape, async (args) => {
     return await makeAdminAPIRequest(`/routes/${args.id}`, "PATCH", args.route);
   });
 };

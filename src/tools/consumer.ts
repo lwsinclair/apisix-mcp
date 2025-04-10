@@ -1,6 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { CreateOrUpdateConsumerSchema, GetCredentialSchema, DeleteCredentialSchema, CreateCredentialSchema } from "../schemas/consumer.js";
-import makeAdminAPIRequest from "../adminAPI.js";
+import makeAdminAPIRequest from "../utils/adminAPI.js";
 
 const setupConsumerTools = (server: McpServer) => {
   server.tool(
