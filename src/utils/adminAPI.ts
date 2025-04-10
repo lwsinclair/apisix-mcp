@@ -4,7 +4,8 @@ import {
   APISIX_ADMIN_API_PORT,
   APISIX_ADMIN_API_PREFIX,
   APISIX_ADMIN_KEY,
-} from "./env.js";
+} from "../utils/env.js";
+
 import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 
 export async function makeAdminAPIRequest(

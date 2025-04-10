@@ -1,6 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { CreateSSLSchema, UpdateSSLSchema } from "../schemas/ssl.js";
-import { makeAdminAPIRequest } from "../adminAPI.js";
+import makeAdminAPIRequest from "../utils/adminAPI.js";
 
 const setupSSLTools = (server: McpServer) => {
   server.tool("create_ssl", "Create an SSL certificate", CreateSSLSchema.shape, async (args) => {

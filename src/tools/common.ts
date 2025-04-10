@@ -1,10 +1,10 @@
 import { DeleteResourceSchema, GetResourceSchema, SendRequestSchema } from "../schemas/common.js";
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import makeAdminAPIRequest from "../adminAPI.js";
 import axios, { AxiosRequestConfig, AxiosError } from "axios";
-import { APISIX_SERVER_PORT, APISIX_SERVER_HOST } from "../env.js";
 
+import { APISIX_SERVER_PORT, APISIX_SERVER_HOST } from "../utils/env.js";
+import makeAdminAPIRequest from "../utils/adminAPI.js";
 interface RequestConfig {
   path: AxiosRequestConfig['url'];
   method: AxiosRequestConfig['method'];

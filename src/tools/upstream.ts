@@ -1,6 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { UpdateUpstreamSchema, CreateUpstreamSchema } from "../schemas/upstream.js";
-import { makeAdminAPIRequest } from "../adminAPI.js";
+import makeAdminAPIRequest from "../utils/adminAPI.js";
 
 const setupUpstreamTools = (server: McpServer) => {
   server.tool("create_upstream", "Create an upstream service with load balancing settings", CreateUpstreamSchema.shape, async (args) => {

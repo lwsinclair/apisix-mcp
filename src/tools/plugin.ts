@@ -1,5 +1,5 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { makeAdminAPIRequest } from "../adminAPI.js";
+import makeAdminAPIRequest from "../utils/adminAPI.js";
 import {
   CreateOrUpdatePluginMetadataSchema,
   DeletePluginMetadataSchema,

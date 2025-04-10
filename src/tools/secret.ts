@@ -1,6 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { GetSecretSchema, UpdateSecretSchema, CreateSecretSchema, DeleteSecretSchema } from "../schemas/secret.js";
-import { makeAdminAPIRequest } from "../adminAPI.js";
+import makeAdminAPIRequest from "../utils/adminAPI.js";
 
 const setupSecretTools = (server: McpServer) => {
   server.tool("get_secret_by_id", "Get a secret by ID", GetSecretSchema.shape, async (args) => {
@@ -24,7 +24,7 @@ const setupSecretTools = (server: McpServer) => {
   });
 
   server.tool("update_secret", "Update specific attributes of an existing secret", UpdateSecretSchema.shape, async (args) => {
-    return await makeAdminAPIRequest(`/secrets/${args.manager}/${args.id}`, "PATCH", args.secret);
+    return await makeAdminAPIRequest(`/secrets/${args.manager}/${args.id}`, "PATCH",  args.secret);
   });
 
   server.tool("delete_secret", "Delete a secret by ID", DeleteSecretSchema.shape, async (args) => {

@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { PluginSchema } from "./plugin.js";
+import { createNullablePatchSchema } from "../utils/helper.js";
 
 export const ConsumerGroupSchema = z
   .object({
@@ -13,10 +14,10 @@ export const ConsumerGroupSchema = z
   .passthrough()
   .describe("consumer group configuration object");
 
-export const UpdateConsumerGroupSchema = z.object({
+export const UpdateConsumerGroupSchema = createNullablePatchSchema(z.object({
   id: z.string().describe("consumer group ID"),
   consumerGroup: ConsumerGroupSchema.partial(),
-});
+}));
 
 export const CreateConsumerGroupSchema = z.object({
   id: z.string().optional().describe("consumer group ID"),

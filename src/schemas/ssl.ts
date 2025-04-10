@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { StatusSchema } from "./common.js";
-
+import { createNullablePatchSchema } from "../utils/helper.js";
 export const SSLSchema = z
   .object({
     label: z.string().optional().describe("SSL label"),
@@ -26,10 +26,10 @@ export const SSLSchema = z
   .passthrough()
   .describe("SSL certificate configuration object");
 
-export const UpdateSSLSchema = z.object({
+export const UpdateSSLSchema = createNullablePatchSchema(z.object({
   id: z.string().describe("SSL certificate ID"),
   ssl: SSLSchema.partial(),
-});
+}));
 
 export const CreateSSLSchema = z.object({
   id: z.string().optional().describe("SSL certificate ID"),

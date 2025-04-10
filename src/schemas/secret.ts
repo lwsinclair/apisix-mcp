@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { PaginationSchema } from "./common.js";
+import { createNullablePatchSchema } from "../utils/helper.js";
 
 const VaultSecretSchema = z.object({
   uri: z.string().describe("address of the Vault server"),
@@ -55,11 +56,11 @@ export const GetSecretSchema = z
   })
   .merge(PaginationSchema);
 
-export const UpdateSecretSchema = z.object({
+export const UpdateSecretSchema = createNullablePatchSchema(z.object({
   id: z.string().describe("secret id"),
   manager: SecretTypeSchema.describe("secret manager type"),
   secret: SecretSchema,
-});
+}));
 
 export const CreateSecretSchema = z.object({
   id: z.string().optional().describe("secret id"),

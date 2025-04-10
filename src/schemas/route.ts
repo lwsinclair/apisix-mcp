@@ -2,6 +2,7 @@ import { z } from "zod";
 import { UpstreamSchema } from "./upstream.js";
 import { PluginSchema } from "./plugin.js";
 import { StatusSchema } from "./common.js";
+import { createNullablePatchSchema } from "../utils/helper.js";
 
 export const RouteSchema = z
   .object({
@@ -60,10 +61,10 @@ export const RouteSchema = z
   .passthrough()
   .describe("route configuration");
 
-export const UpdateRouteSchema = z.object({
+export const UpdateRouteSchema = createNullablePatchSchema(z.object({
   id: z.string().describe("route id"),
   route: RouteSchema.partial(),
-});
+}));
 
 export const CreateRouteSchema = z.object({
   id: z.string().optional().describe("route id"),

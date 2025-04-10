@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { createNullablePatchSchema } from "../utils/helper.js";
 
 export const UpstreamSchema = z.object({
     name: z.string().optional().describe("upstream name"),
@@ -64,6 +65,6 @@ export const UpstreamSchema = z.object({
     }).optional().describe("keepalive pool configuration")
 }).passthrough().describe("upstream service configuration object");
 
-export const UpdateUpstreamSchema = z.object({ id: z.string().describe("upstream id"), upstream: UpstreamSchema.partial() });
+export const UpdateUpstreamSchema = createNullablePatchSchema(z.object({ id: z.string().describe("upstream id"), upstream: UpstreamSchema.partial() }));
 
 export const CreateUpstreamSchema = z.object({ id: z.string().optional().describe("upstream id"), upstream: UpstreamSchema });

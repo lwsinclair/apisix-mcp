@@ -1,6 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { CreateServiceSchema, UpdateServiceSchema } from "../schemas/service.js";
-import { makeAdminAPIRequest } from "../adminAPI.js";
+import makeAdminAPIRequest from "../utils/adminAPI.js";
 
 const setupServiceTools = (server: McpServer) => {
   server.tool("create_service", "Create a service", CreateServiceSchema.shape, async (args) => {

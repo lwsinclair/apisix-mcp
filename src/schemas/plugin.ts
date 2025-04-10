@@ -1,6 +1,11 @@
 import { z } from "zod";
+import { createNullablePatchSchema } from "../utils/helper.js";
 
-export const PluginSchema = z.record(z.string(), z.any()).describe("plugins configuration");
+export const PluginSchema = z.object({
+  _meta: z.object({
+    disable: z.boolean().default(false).describe("control whether the plugin is enabled"),
+  }).optional(),
+}).passthrough().describe("plugins configuration");
 
 export const GetPluginSchemaSchema = z.object({
   name: z.string().describe("plugins name"),
@@ -20,10 +25,10 @@ export const DeletePluginMetadataSchema = z.object({
   name: z.string().describe("plugins name"),
 });
 
-export const UpdateGlobalRuleSchema = z.object({
+export const UpdateGlobalRuleSchema = createNullablePatchSchema(z.object({
   id: z.string().describe("global rule ID"),
   plugins: PluginSchema,
-});
+}));
 
 export const CreateGlobalRuleSchema = z.object({
   id: z.string().describe("global rule ID"),
@@ -41,7 +46,7 @@ export const CreatePluginConfigSchema = z.object({
   plugins: PluginConfigSchema,
 });
 
-export const UpdatePluginConfigSchema = z.object({
+export const UpdatePluginConfigSchema = createNullablePatchSchema(z.object({
   id: z.string().describe("plugin config ID"),
   plugins: PluginConfigSchema,
-});
+}));
