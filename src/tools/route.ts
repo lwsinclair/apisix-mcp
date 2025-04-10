@@ -13,7 +13,7 @@ const setupRouteTools = (server: McpServer) => {
     }
   });
 
-  server.tool("update_route", `Update specific attributes of an existing route`, UpdateRouteSchema.shape, async (args) => {
+  server.tool("update_route", "Update specific attributes of an existing route", UpdateRouteSchema.shape, async (args) => {
     return await makeAdminAPIRequest(`/routes/${args.id}`, "PATCH", args.route);
   });
 };
